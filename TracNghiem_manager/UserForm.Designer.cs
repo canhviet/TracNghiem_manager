@@ -70,9 +70,6 @@ namespace TracNghiem_manager
             containerBtnPanel.Controls.Add(infoPanelBox, 0, 0);
             containerBtnPanel.Controls.Add(btnHome, 0, 1);
 
-            containerBtnPanel.Controls.Add(btnNguoiDung);
-            containerBtnPanel.RowStyles.Add(new RowStyle());
-
             containerBtnPanel.Dock = DockStyle.Left;
             containerBtnPanel.Location = new Point(0, 0);
             containerBtnPanel.Margin = new Padding(10);

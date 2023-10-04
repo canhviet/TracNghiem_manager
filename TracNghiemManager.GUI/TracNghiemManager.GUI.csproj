@@ -56,6 +56,29 @@
       <DependentUpon>fThemCauHoi.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Manager.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\Manager.Designer.cs">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\UserDetail.Designer.cs">
+      <DependentUpon>UserDetail.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="CauHoi\CauHoiUserControl.resx">
@@ -64,11 +87,28 @@
     <EmbeddedResource Include="CauHoi\fThemCauHoi.resx">
       <DependentUpon>fThemCauHoi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\Manager.resx">
+      <DependentUpon>Manager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserDetail.resx">
+      <DependentUpon>UserDetail.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TracNghiemManager.BUS\TracNghiemManager.BUS.csproj">
       <Project>{065def08-b1a5-4543-8977-dcff0f235fb0}</Project>
       <Name>TracNghiemManager.BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TracNghiemManager.DAO\TracNghiemManager.DAO.csproj">
+      <Project>{9804F92C-5242-4584-BBE0-259FF022320E}</Project>
+      <Name>TracNghiemManager.DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\TracNghiemManager.DTO\TracNghiemManager.DTO.csproj">
       <Project>{416CE8BC-B563-478A-BFD4-3DF9F4BE7116}</Project>

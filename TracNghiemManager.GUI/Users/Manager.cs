@@ -8,9 +8,9 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TracNghiem_manager.Properties;
-using TracNghiemManager.DAO;
+using TracNghiemManager.BUS;
 using TracNghiemManager.DTO;
+using TracNghiemManager.GUI.Users;
 
 namespace TracNghiem_manager
 {
@@ -32,7 +32,7 @@ namespace TracNghiem_manager
 
         private void renderUsers()
         {
-            List<UserDTO> users = UserDAO.instance.GetAll();
+            List<UserDTO> users = UserBUS.instance.GetAll();
             panelUser = new Panel[users.Count];
             buttonCT = new Button[users.Count];
             buttonDELETE = new Button[users.Count];
@@ -119,7 +119,7 @@ namespace TracNghiem_manager
 
         }
 
-        private void Delete_MouseClick(object? sender, MouseEventArgs e)
+        private void Delete_MouseClick(object sender, MouseEventArgs e)
         {
             string message = "Do you want to delete this user?";
             string title = "Delete User";
@@ -140,19 +140,26 @@ namespace TracNghiem_manager
             }
         }
 
-        private void Detail_MouseClick(object? sender, MouseEventArgs e)
+        private void Detail_MouseClick(object sender, MouseEventArgs e)
         {
             Button bt = sender as Button;
-
             if (bt != null)
             {
-                MessageBox.Show("" + bt.Tag);
+                int user_id = Convert.ToInt32(bt.Tag);
+                UserDetail detail = new UserDetail(user_id);
+                detail.ShowDialog();
             }
         }
 
         private void DeleteUser(int id)
         {
-            UserDAO.instance.Delete(id);
+            UserBUS.instance.Delete(id);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddUser add_user = new AddUser();
+            add_user.ShowDialog();
         }
     }
 }

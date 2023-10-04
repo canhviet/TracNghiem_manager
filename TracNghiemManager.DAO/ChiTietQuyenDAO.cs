@@ -13,7 +13,29 @@ namespace TracNghiemManager.DAO
         public static ChiTietQuyenDAO Instance = new ChiTietQuyenDAO();
         public bool Add(ChiTietQuyenDTO t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SqlConnection connection = DbConnection.GetSqlConnection())
+                {
+                    string query = "INSERT INTO cau_tra_loi (ma_cau_hoi, noi_dung, do_kho, la_dap_an, trang_thai)" +
+                        "VALUES (@idCauHoi, @noiDung, @doKho, @laDapAn, @trangThai)";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@idCauHoi", t.MaCauHoi);
+                        command.Parameters.AddWithValue("@noiDung", t.NoiDung);
+                        command.Parameters.AddWithValue("@doKho", t.DoKho);
+                        command.Parameters.AddWithValue("@laDapAn", t.DapAn);
+                        command.Parameters.AddWithValue("@trangThai", 1);
+                        int rowsChanged = command.ExecuteNonQuery();
+                        return rowsChanged > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
         }
 
         public bool Delete(int id)

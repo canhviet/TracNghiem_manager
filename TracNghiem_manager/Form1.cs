@@ -113,7 +113,5 @@ namespace TracNghiem_manager
                 button1.PerformClick();
             }
         }
-
-
     }
 }

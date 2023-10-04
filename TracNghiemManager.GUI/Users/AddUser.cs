@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TracNghiem_manager
+namespace TracNghiemManager.GUI.Users
 {
-    public partial class UserDetail : Form
+    public partial class AddUser : Form
     {
-        public UserDetail()
+        public AddUser()
         {
             InitializeComponent();
         }
