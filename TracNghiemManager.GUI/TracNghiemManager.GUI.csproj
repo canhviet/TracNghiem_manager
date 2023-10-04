@@ -55,6 +55,24 @@
     <Compile Include="CauHoi\fThemCauHoi.Designer.cs">
       <DependentUpon>fThemCauHoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="LopHoc\fDeThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LopHoc\fDeThi.Designer.cs">
+      <DependentUpon>fDeThi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LopHoc\fThemLop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LopHoc\fThemLop.Designer.cs">
+      <DependentUpon>fThemLop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LopHoc\LopHocUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LopHoc\LopHocUserControl.Designer.cs">
+      <DependentUpon>LopHocUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MonHoc\fThemMonHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,16 +116,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CauHoi\fThemCauHoi.resx">
       <DependentUpon>fThemCauHoi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Users\AddUser.resx">
-      <DependentUpon>AddUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Users\Manager.resx">
-      <DependentUpon>Manager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MonHoc\fThemMonHoc.resx">
       <DependentUpon>fThemMonHoc.cs</DependentUpon>
