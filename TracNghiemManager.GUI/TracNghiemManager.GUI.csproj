@@ -55,6 +55,18 @@
     <Compile Include="CauHoi\fThemCauHoi.Designer.cs">
       <DependentUpon>fThemCauHoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="MonHoc\fThemMonHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MonHoc\fThemMonHoc.Designer.cs">
+      <DependentUpon>fThemMonHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonHoc\MonHocUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MonHoc\MonHocUserControl.Designer.cs">
+      <DependentUpon>MonHocUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -97,8 +109,11 @@
     <EmbeddedResource Include="Users\Manager.resx">
       <DependentUpon>Manager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Users\UserDetail.resx">
-      <DependentUpon>UserDetail.cs</DependentUpon>
+    <EmbeddedResource Include="MonHoc\fThemMonHoc.resx">
+      <DependentUpon>fThemMonHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonHoc\MonHocUserControl.resx">
+      <DependentUpon>MonHocUserControl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

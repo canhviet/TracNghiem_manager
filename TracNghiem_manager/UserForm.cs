@@ -186,7 +186,7 @@ namespace TracNghiem_manager
 
         private void btnMonHoc_Click(object sender, EventArgs e)
         {
-
+            ShowUserControl(monHocPanel);
         }
 
         private void btnCauHoi_Click(object sender, EventArgs e)

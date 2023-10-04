@@ -20,10 +20,7 @@ namespace TracNghiemManager.DAO
                     string query = "INSERT INTO users (usename, mat_khau, ngay_tao) VALUES (@usename, 123, 12/31/2000)";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@idCauHoi", t.MaCauHoi);
-                        command.Parameters.AddWithValue("@noiDung", t.NoiDung);
-                        command.Parameters.AddWithValue("@doKho", t.DoKho);
-                        command.Parameters.AddWithValue("@laDapAn", t.DapAn);
+                        
                         command.Parameters.AddWithValue("@trangThai", 1);
                         int rowsChanged = command.ExecuteNonQuery();
                         return rowsChanged > 0;
