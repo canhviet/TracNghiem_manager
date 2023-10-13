@@ -237,7 +237,6 @@ namespace TracNghiemManager.GUI.CauHoi
                 fThemCauHoi fThem = new fThemCauHoi(this, "edit", selectedCauHoi, l);
                 fThem.Visible = true;
             }
-           
         }
 
         private void btnChiTiet_Click(object sender, EventArgs e)

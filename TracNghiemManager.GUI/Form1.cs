@@ -16,7 +16,7 @@ namespace TracNghiemManager.GUI
         private Rectangle recTxt1;
         private Rectangle recTxt2;
         private Rectangle recCBox1;
-        public static int USER_ID;
+        public static int USER_ID = -1;
         public Form1()
         {
             InitializeComponent();
@@ -115,7 +115,5 @@ namespace TracNghiemManager.GUI
                 button1.PerformClick();
             }
         }
-
-
     }
 }

@@ -1,4 +1,4 @@
-using TracNghiemManager.GUI;
+using TracNghiemManager.GUI.Users;
 
 namespace TracNghiem_manager
 {

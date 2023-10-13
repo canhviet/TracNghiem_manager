@@ -121,11 +121,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserForm.cs">
+    <Compile Include="Users\AddUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm.Designer.cs">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <Compile Include="Users\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\ManageUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Users\ManageUser.Designer.cs">
+      <DependentUpon>ManageUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\UserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\UserDetail.Designer.cs">
+      <DependentUpon>UserDetail.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -167,7 +179,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\ManageUser.resx">
+      <DependentUpon>ManageUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForm.resx">
       <DependentUpon>UserForm.cs</DependentUpon>
@@ -177,6 +195,10 @@
     <ProjectReference Include="..\TracNghiemManager.BUS\TracNghiemManager.BUS.csproj">
       <Project>{065def08-b1a5-4543-8977-dcff0f235fb0}</Project>
       <Name>TracNghiemManager.BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TracNghiemManager.DAO\TracNghiemManager.DAO.csproj">
+      <Project>{9804F92C-5242-4584-BBE0-259FF022320E}</Project>
+      <Name>TracNghiemManager.DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\TracNghiemManager.DTO\TracNghiemManager.DTO.csproj">
       <Project>{416CE8BC-B563-478A-BFD4-3DF9F4BE7116}</Project>

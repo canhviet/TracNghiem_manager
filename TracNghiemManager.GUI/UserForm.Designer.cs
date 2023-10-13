@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using TracNghiem_manager.Properties;
 using TracNghiemManager.GUI.CauHoi;
 using TracNghiemManager.GUI.DeThi;
 using TracNghiemManager.GUI.LopHoc;
@@ -38,10 +39,10 @@ namespace TracNghiemManager.GUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             containerBtnPanel = new TableLayoutPanel();
             infoPanelBox = new TableLayoutPanel();
+            pictureOwner = new PictureBox();
             infoOwnerPanel = new TableLayoutPanel();
             lblOwnerName = new Label();
-            lblOwnerRule = new Label();
-            pictureOwner = new PictureBox();
+            button1 = new Button();
             btnHome = new Button();
             btnMonHoc = new Button();
             btnThongKe = new Button();
@@ -49,21 +50,18 @@ namespace TracNghiemManager.GUI
             btnLopHoc = new Button();
             btnThoat = new Button();
             btnDeThi = new Button();
-            btnPhanQuyen = new Button();
             btnNguoiDung = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
             containerPanel = new Panel();
             homePanel = new HomeUserControl();
-            lopHocPanel = new LopHocUserControl();
-            monHocPanel = new MonHocUserControl();
             cauHoiPanel = new CauHoiUserControl();
             deThiPanel = new DeThiUserControl();
-            //thongKePanel = new ThongKeUserControl();
-            //PermissionUser = new PermissionUserControl();
+            thongKePanel = new ThongKeUserControl();
+            userPanel = new ManageUser();
             containerBtnPanel.SuspendLayout();
             infoPanelBox.SuspendLayout();
-            infoOwnerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureOwner).BeginInit();
+            infoOwnerPanel.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             containerPanel.SuspendLayout();
             SuspendLayout();
@@ -72,8 +70,8 @@ namespace TracNghiemManager.GUI
             // 
             containerBtnPanel.ColumnCount = 1;
             containerBtnPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            containerBtnPanel.Controls.Add(infoPanelBox, 0, 0);
-            containerBtnPanel.Controls.Add(btnHome, 0, 1);
+            containerBtnPanel.Controls.Add(infoPanelBox);
+            containerBtnPanel.Controls.Add(btnHome);
             containerBtnPanel.Dock = DockStyle.Left;
             containerBtnPanel.Location = new Point(0, 0);
             containerBtnPanel.Margin = new Padding(10);
@@ -85,63 +83,21 @@ namespace TracNghiemManager.GUI
             // 
             // infoPanelBox
             // 
-            infoPanelBox.ColumnCount = 2;
-            infoPanelBox.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.4740067F));
+            infoPanelBox.ColumnCount = 3;
+            infoPanelBox.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35.47401F));
             infoPanelBox.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 64.52599F));
-            infoPanelBox.Controls.Add(infoOwnerPanel, 1, 0);
+            infoPanelBox.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 63F));
             infoPanelBox.Controls.Add(pictureOwner, 0, 0);
-            infoPanelBox.Enabled = false;
+            infoPanelBox.Controls.Add(infoOwnerPanel, 1, 0);
+            infoPanelBox.Controls.Add(button1, 2, 0);
             infoPanelBox.Location = new Point(0, 10);
             infoPanelBox.Margin = new Padding(0, 10, 0, 0);
             infoPanelBox.Name = "infoPanelBox";
             infoPanelBox.Padding = new Padding(0, 0, 0, 10);
             infoPanelBox.RowCount = 1;
-            infoPanelBox.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            infoPanelBox.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            infoPanelBox.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             infoPanelBox.Size = new Size(327, 90);
             infoPanelBox.TabIndex = 30;
-            // 
-            // infoOwnerPanel
-            // 
-            infoOwnerPanel.ColumnCount = 1;
-            infoOwnerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            infoOwnerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            infoOwnerPanel.Controls.Add(lblOwnerName, 0, 0);
-            infoOwnerPanel.Controls.Add(lblOwnerRule, 0, 1);
-            infoOwnerPanel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            infoOwnerPanel.Location = new Point(121, 5);
-            infoOwnerPanel.Margin = new Padding(5);
-            infoOwnerPanel.Name = "infoOwnerPanel";
-            infoOwnerPanel.RowCount = 2;
-            infoOwnerPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            infoOwnerPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            infoOwnerPanel.Size = new Size(200, 53);
-            infoOwnerPanel.TabIndex = 1;
-            // 
-            // lblOwnerName
-            // 
-            lblOwnerName.AutoSize = true;
-            lblOwnerName.Dock = DockStyle.Fill;
-            lblOwnerName.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
-            lblOwnerName.Location = new Point(0, 0);
-            lblOwnerName.Margin = new Padding(0);
-            lblOwnerName.Name = "lblOwnerName";
-            lblOwnerName.Size = new Size(200, 26);
-            lblOwnerName.TabIndex = 0;
-            lblOwnerName.Text = "Nguyễn Anh Khoa";
-            lblOwnerName.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // lblOwnerRule
-            // 
-            lblOwnerRule.AutoSize = true;
-            lblOwnerRule.Dock = DockStyle.Fill;
-            lblOwnerRule.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblOwnerRule.Location = new Point(3, 26);
-            lblOwnerRule.Name = "lblOwnerRule";
-            lblOwnerRule.Size = new Size(194, 27);
-            lblOwnerRule.TabIndex = 1;
-            lblOwnerRule.Text = "Admin";
-            lblOwnerRule.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // pictureOwner
             // 
@@ -150,11 +106,50 @@ namespace TracNghiemManager.GUI
             pictureOwner.Location = new Point(2, 2);
             pictureOwner.Margin = new Padding(2);
             pictureOwner.Name = "pictureOwner";
-            pictureOwner.Size = new Size(112, 76);
+            pictureOwner.Size = new Size(89, 76);
             pictureOwner.SizeMode = PictureBoxSizeMode.Zoom;
             pictureOwner.TabIndex = 0;
             pictureOwner.TabStop = false;
             pictureOwner.WaitOnLoad = true;
+            // 
+            // infoOwnerPanel
+            // 
+            infoOwnerPanel.ColumnCount = 1;
+            infoOwnerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            infoOwnerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            infoOwnerPanel.Controls.Add(lblOwnerName, 0, 0);
+            infoOwnerPanel.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            infoOwnerPanel.Location = new Point(98, 5);
+            infoOwnerPanel.Margin = new Padding(5);
+            infoOwnerPanel.Name = "infoOwnerPanel";
+            infoOwnerPanel.RowCount = 1;
+            infoOwnerPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            infoOwnerPanel.Size = new Size(160, 70);
+            infoOwnerPanel.TabIndex = 1;
+            // 
+            // lblOwnerName
+            // 
+            lblOwnerName.Anchor = AnchorStyles.None;
+            lblOwnerName.AutoSize = true;
+            lblOwnerName.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            lblOwnerName.Location = new Point(9, 15);
+            lblOwnerName.Margin = new Padding(0);
+            lblOwnerName.Name = "lblOwnerName";
+            lblOwnerName.Size = new Size(141, 40);
+            lblOwnerName.TabIndex = 0;
+            lblOwnerName.Text = "Nguyễn Anh Khoa Khoa Khoa";
+            lblOwnerName.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // button1
+            // 
+            button1.Dock = DockStyle.Bottom;
+            button1.Image = Resources.setting_icon;
+            button1.Location = new Point(266, 20);
+            button1.Name = "button1";
+            button1.Size = new Size(58, 57);
+            button1.TabIndex = 2;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // btnHome
             // 
@@ -306,27 +301,6 @@ namespace TracNghiemManager.GUI
             btnDeThi.UseVisualStyleBackColor = false;
             btnDeThi.Click += btnDeThi_Click;
             // 
-            // btnPhanQuyen
-            // 
-            btnPhanQuyen.BackColor = Color.White;
-            btnPhanQuyen.Cursor = Cursors.Hand;
-            btnPhanQuyen.FlatAppearance.BorderSize = 0;
-            btnPhanQuyen.FlatStyle = FlatStyle.Flat;
-            btnPhanQuyen.Font = new Font("Segoe UI", 13.2000008F, FontStyle.Regular, GraphicsUnit.Point);
-            btnPhanQuyen.Image = (Image)resources.GetObject("btnPhanQuyen.Image");
-            btnPhanQuyen.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPhanQuyen.Location = new Point(10, 689);
-            btnPhanQuyen.Margin = new Padding(10, 5, 10, 5);
-            btnPhanQuyen.MinimumSize = new Size(117, 46);
-            btnPhanQuyen.Name = "btnPhanQuyen";
-            btnPhanQuyen.Padding = new Padding(10, 0, 0, 0);
-            btnPhanQuyen.Size = new Size(310, 60);
-            btnPhanQuyen.TabIndex = 34;
-            btnPhanQuyen.Text = "  Phân Quyền";
-            btnPhanQuyen.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnPhanQuyen.UseVisualStyleBackColor = false;
-            btnPhanQuyen.Click += btnPhanQuyen_Click;
-            // 
             // btnNguoiDung
             // 
             btnNguoiDung.BackColor = Color.White;
@@ -369,12 +343,10 @@ namespace TracNghiemManager.GUI
             // containerPanel
             // 
             containerPanel.Controls.Add(homePanel);
-            containerPanel.Controls.Add(lopHocPanel);
-            containerPanel.Controls.Add(monHocPanel);
             containerPanel.Controls.Add(cauHoiPanel);
             containerPanel.Controls.Add(deThiPanel);
-            //containerPanel.Controls.Add(thongKePanel);
-            //containerPanel.Controls.Add(PermissionUser);
+            containerPanel.Controls.Add(thongKePanel);
+            containerPanel.Controls.Add(userPanel);
             containerPanel.Dock = DockStyle.Fill;
             containerPanel.Location = new Point(0, 0);
             containerPanel.Margin = new Padding(0);
@@ -390,22 +362,6 @@ namespace TracNghiemManager.GUI
             homePanel.Name = "homePanel";
             homePanel.Size = new Size(1210, 845);
             homePanel.TabIndex = 0;
-            // 
-            // lopHocPanel
-            // 
-            lopHocPanel.Dock = DockStyle.Fill;
-            lopHocPanel.Location = new Point(0, 0);
-            lopHocPanel.Name = "lopHocPanel";
-            lopHocPanel.Size = new Size(1210, 845);
-            lopHocPanel.TabIndex = 1;
-            // 
-            // monHocPanel
-            // 
-            monHocPanel.Dock = DockStyle.Fill;
-            monHocPanel.Location = new Point(0, 0);
-            monHocPanel.Name = "monHocPanel";
-            monHocPanel.Size = new Size(1210, 845);
-            monHocPanel.TabIndex = 2;
             // 
             // cauHoiPanel
             // 
@@ -426,20 +382,20 @@ namespace TracNghiemManager.GUI
             // 
             // thongKePanel
             // 
-            //thongKePanel.Dock = DockStyle.Fill;
-            //thongKePanel.Location = new Point(0, 0);
-            //thongKePanel.Name = "thongKePanel";
-            //thongKePanel.Size = new Size(1210, 845);
-            //thongKePanel.TabIndex = 5;
-            //// 
-            //// PermissionUser
-            //// 
-            //PermissionUser.Dock = DockStyle.Fill;
-            //PermissionUser.Location = new Point(0, 0);
-            //PermissionUser.Margin = new Padding(3, 2, 3, 2);
-            //PermissionUser.Name = "PermissionUser";
-            //PermissionUser.Size = new Size(1210, 845);
-            //PermissionUser.TabIndex = 5;
+            thongKePanel.Dock = DockStyle.Fill;
+            thongKePanel.Location = new Point(0, 0);
+            thongKePanel.Name = "thongKePanel";
+            thongKePanel.Size = new Size(1210, 845);
+            thongKePanel.TabIndex = 6;
+            // 
+            // userPanel
+            // 
+            userPanel.Dock = DockStyle.Fill;
+            userPanel.Location = new Point(0, 0);
+            userPanel.Margin = new Padding(3, 2, 3, 2);
+            userPanel.Name = "userPanel";
+            userPanel.Size = new Size(1210, 845);
+            userPanel.TabIndex = 7;
             // 
             // UserForm
             // 
@@ -454,9 +410,9 @@ namespace TracNghiemManager.GUI
             Load += UserForm_Load;
             containerBtnPanel.ResumeLayout(false);
             infoPanelBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureOwner).EndInit();
             infoOwnerPanel.ResumeLayout(false);
             infoOwnerPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureOwner).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
             containerPanel.ResumeLayout(false);
             ResumeLayout(false);
@@ -473,7 +429,6 @@ namespace TracNghiemManager.GUI
         private Button btnMonHoc;
 
 
-        //
         private Color hoverColor = ColorTranslator.FromHtml("#8eddf9");
         private Color defaultTitleBtnColor = ColorTranslator.FromHtml("#646568");
         private Color borderColor = ColorTranslator.FromHtml("#e9edee");
@@ -481,17 +436,16 @@ namespace TracNghiemManager.GUI
         private PictureBox pictureOwner;
         private TableLayoutPanel infoOwnerPanel;
         private Label lblOwnerName;
-        private Label lblOwnerRule;
         private TableLayoutPanel tableLayoutPanel2;
         private HomeUserControl homePanel;
         private LopHocUserControl lopHocPanel;
         private MonHocUserControl monHocPanel;
         private CauHoiUserControl cauHoiPanel;
         private DeThiUserControl deThiPanel;
-        //private ThongKeUserControl thongKePanel;
-        //private PermissionUserControl PermissionUser;
+        private ThongKeUserControl thongKePanel;
         private Panel containerPanel;
-        private Button btnPhanQuyen;
         private Button btnNguoiDung;
+        private ManageUser userPanel;
+        private Button button1;
     }
 }

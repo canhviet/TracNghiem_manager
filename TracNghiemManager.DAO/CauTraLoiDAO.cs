@@ -133,7 +133,6 @@ namespace TracNghiemManager.DAO
                             cauTraLoi.TrangThai = Convert.ToInt32(reader["trang_thai"]);
                         }
                     }
-
                 }
             }
             return cauTraLoi;
