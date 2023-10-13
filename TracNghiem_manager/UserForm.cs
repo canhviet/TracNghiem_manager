@@ -63,9 +63,10 @@ namespace TracNghiem_manager
         private void HideAllUserControls()
         {
             homePanel.Visible = false;
-            lopHocPanel.Visible = false;
-            monHocPanel.Visible = false;
+            //lopHocPanel.Visible = false;
+            //monHocPanel.Visible = false;
             cauHoiPanel.Visible = false;
+            userPanel.Visible = false;
             deThiPanel.Visible = false;
             thongKePanel.Visible = false;
 
@@ -77,34 +78,6 @@ namespace TracNghiem_manager
             HideAllUserControls();
             controlToShow.Visible = true;
         }
-        //private void ShowUserControl(UserControl selectedControl)
-        //{
-        //    // Duyệt qua tất cả các UserControl trong containerControl
-        //    foreach (Control control in containerBtnPanel.Controls)
-        //    {
-        //        if (control is UserControl)
-        //        {
-        //            // Nếu UserControl là UserControl bạn muốn hiển thị, thì hiển thị nó
-        //            if (control == selectedControl)
-        //            {
-        //                control.Visible = true;
-        //            }
-        //            else
-        //            {
-        //                // Nếu không phải UserControl bạn muốn hiển thị, thì tắt nó (ẩn đi)
-        //                if (control != null)
-        //                {
-
-        //                    control.Visible = false;
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
-
-
-
         public T CreateAndConfigureControl<T>(string name) where T : Control, new()
         {
             T control = new T();
@@ -222,6 +195,9 @@ namespace TracNghiem_manager
 
         private void UserForm_Load(object sender, EventArgs e)
         {
+            UserDTO user = UserDAO.instance.GetById(Form1.USER_ID);
+            lblOwnerName.Text = user.UserName;
+
             List<ChucNangDTO> listChucNang = ChucNangDAO.Instance.GetTenChucNangBangUserId(Form1.USER_ID);
 
             for (int i = 0; i < listChucNang.Count; i++)
@@ -261,11 +237,21 @@ namespace TracNghiem_manager
                     containerBtnPanel.RowStyles.Add(new RowStyle());
                 }
             }
+
+            containerBtnPanel.Controls.Add(btnNguoiDung);
+            containerBtnPanel.RowStyles.Add(new RowStyle());
+
             containerBtnPanel.Controls.Add(btnThongKe);
             containerBtnPanel.RowStyles.Add(new RowStyle());
             containerBtnPanel.Controls.Add(btnThoat);
             containerBtnPanel.RowStyles.Add(new RowStyle());
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UserInfo info = new UserInfo();
+            info.ShowDialog();
         }
 
 
@@ -290,5 +276,29 @@ namespace TracNghiem_manager
         //}
 
 
+        //private void ShowUserControl(UserControl selectedControl)
+        //{
+        //    // Duyệt qua tất cả các UserControl trong containerControl
+        //    foreach (Control control in containerBtnPanel.Controls)
+        //    {
+        //        if (control is UserControl)
+        //        {
+        //            // Nếu UserControl là UserControl bạn muốn hiển thị, thì hiển thị nó
+        //            if (control == selectedControl)
+        //            {
+        //                control.Visible = true;
+        //            }
+        //            else
+        //            {
+        //                // Nếu không phải UserControl bạn muốn hiển thị, thì tắt nó (ẩn đi)
+        //                if (control != null)
+        //                {
+
+        //                    control.Visible = false;
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

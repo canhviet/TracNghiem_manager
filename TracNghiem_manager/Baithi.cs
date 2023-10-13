@@ -24,6 +24,7 @@ namespace TracNghiem_manager
         private int so_cau_hoi = 50;
         private int currentIndex = 0;
         private Panel[] slide;
+        private string[] dapAn;
         public Baithi()
         {
             InitializeComponent();
@@ -149,6 +150,8 @@ namespace TracNghiem_manager
                 label.Location = new Point(100, 100);
                 slide[i - 1].Controls.Add(label);
                 panel1.Controls.Add(slide[i - 1]);
+
+                //do cau hoi
             }
 
         }

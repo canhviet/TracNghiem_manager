@@ -1,3 +1,5 @@
+using TracNghiemManager.GUI.Users;
+
 namespace TracNghiem_manager
 {
     internal static class Program

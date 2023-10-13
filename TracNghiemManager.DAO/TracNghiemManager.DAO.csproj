@@ -47,7 +47,6 @@
     <Compile Include="DbConnection.cs" />
     <Compile Include="IDAO.cs" />
     <Compile Include="ChiTietQuyenDAO.cs" />
-    <Compile Include="ChiTietQuyenDAO.cs" />
     <Compile Include="LopDAO.cs" />
     <Compile Include="MonHocDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

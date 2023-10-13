@@ -34,23 +34,15 @@ namespace TracNghiem_manager
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HomeUserControl));
             mainPanel = new TableLayoutPanel();
             informationContainerPanel = new TableLayoutPanel();
-            tableLayoutPanel1 = new TableLayoutPanel();
             descPanel = new TableLayoutPanel();
             TitlePanel = new TableLayoutPanel();
             lblHeading = new Label();
             pictureBox4 = new PictureBox();
             label6 = new Label();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            tableLayoutPanel5 = new TableLayoutPanel();
             mainPanel.SuspendLayout();
-            informationContainerPanel.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
             descPanel.SuspendLayout();
             TitlePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            tableLayoutPanel3.SuspendLayout();
             SuspendLayout();
             // 
             // mainPanel
@@ -77,7 +69,6 @@ namespace TracNghiem_manager
             informationContainerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.0802917F));
             informationContainerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45.8394165F));
             informationContainerPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 27.0073F));
-            informationContainerPanel.Controls.Add(tableLayoutPanel1, 1, 0);
             informationContainerPanel.Dock = DockStyle.Fill;
             informationContainerPanel.Location = new Point(3, 237);
             informationContainerPanel.Margin = new Padding(3, 2, 3, 2);
@@ -88,22 +79,6 @@ namespace TracNghiem_manager
             informationContainerPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 536F));
             informationContainerPanel.Size = new Size(1370, 536);
             informationContainerPanel.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.Anchor = AnchorStyles.None;
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 28.88889F));
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 0, 0);
-            tableLayoutPanel1.Controls.Add(tableLayoutPanel3, 0, 1);
-            tableLayoutPanel1.Location = new Point(413, 14);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 395F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(543, 508);
-            tableLayoutPanel1.TabIndex = 0;
             // 
             // descPanel
             // 
@@ -179,67 +154,6 @@ namespace TracNghiem_manager
             label6.Text = "Phần mềm quản lý thi trắc nghiệm";
             label6.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 3;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39.2909279F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.4157772F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 39.2932968F));
-            tableLayoutPanel2.Location = new Point(3, 3);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(537, 107);
-            tableLayoutPanel2.TabIndex = 0;
-            // 
-            // tableLayoutPanel3
-            // 
-            tableLayoutPanel3.ColumnCount = 2;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.3668537F));
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80.63315F));
-            tableLayoutPanel3.Controls.Add(tableLayoutPanel4, 0, 0);
-            tableLayoutPanel3.Controls.Add(tableLayoutPanel5, 1, 0);
-            tableLayoutPanel3.Location = new Point(3, 116);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 1;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel3.Size = new Size(537, 389);
-            tableLayoutPanel3.TabIndex = 1;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 1;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Location = new Point(3, 3);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 7;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel4.Size = new Size(98, 383);
-            tableLayoutPanel4.TabIndex = 0;
-            // 
-            // tableLayoutPanel5
-            // 
-            tableLayoutPanel5.ColumnCount = 1;
-            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel5.Location = new Point(107, 3);
-            tableLayoutPanel5.Name = "tableLayoutPanel5";
-            tableLayoutPanel5.RowCount = 7;
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel5.Size = new Size(427, 383);
-            tableLayoutPanel5.TabIndex = 1;
-            // 
             // HomeUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -249,14 +163,11 @@ namespace TracNghiem_manager
             Name = "HomeUserControl";
             Size = new Size(1376, 775);
             mainPanel.ResumeLayout(false);
-            informationContainerPanel.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
             descPanel.ResumeLayout(false);
             descPanel.PerformLayout();
             TitlePanel.ResumeLayout(false);
             TitlePanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            tableLayoutPanel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -270,10 +181,5 @@ namespace TracNghiem_manager
         private TableLayoutPanel TitlePanel;
         private PictureBox pictureBox4;
         private Label label6;
-        private TableLayoutPanel tableLayoutPanel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private TableLayoutPanel tableLayoutPanel3;
-        private TableLayoutPanel tableLayoutPanel4;
-        private TableLayoutPanel tableLayoutPanel5;
     }
 }

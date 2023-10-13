@@ -97,11 +97,11 @@
     <Compile Include="Users\AddUser.Designer.cs">
       <DependentUpon>AddUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Users\Manager.cs">
+    <Compile Include="Users\ManageUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Users\Manager.Designer.cs">
-      <DependentUpon>Manager.cs</DependentUpon>
+    <Compile Include="Users\ManageUser.Designer.cs">
+      <DependentUpon>ManageUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\UserDetail.cs">
       <SubType>Form</SubType>
@@ -122,6 +122,16 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MonHoc\MonHocUserControl.resx">
       <DependentUpon>MonHocUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\ManageUser.resx">
+      <DependentUpon>ManageUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
