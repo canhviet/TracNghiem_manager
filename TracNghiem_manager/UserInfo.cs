@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TracNghiemManager.BUS;
 using TracNghiemManager.DAO;
 using TracNghiemManager.DTO;
 
@@ -14,10 +15,14 @@ namespace TracNghiem_manager
 {
     public partial class UserInfo : Form
     {
+        UserBUS userBUS = new UserBUS();
+        int user_id = Form1.USER_ID;
+        UserDTO user;
         public UserInfo()
         {
             InitializeComponent();
-            RenderUser();
+            user = userBUS.getById(user_id);
+            RenderUser(user);
         }
 
         private void buttonUpImg_Click(object sender, EventArgs e)
@@ -31,59 +36,81 @@ namespace TracNghiem_manager
                 pictureBox1.Image = Image.FromFile(filepath);
                 pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
 
-                string imagePath = filepath;
-
-                MessageBox.Show(imagePath);
-
-                // Resources.Add("ImagePath", filepath);
+                textBox1.Text = filepath;
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (validate_form())
+            {
+                user = userBUS.getById(user_id);
+                DateTime date = dateTimePicker1.Value;
+                string gender = "";
+                if (rbNam.Checked) gender = rbNam.Tag.ToString();
+                if (RbNu.Checked) gender = RbNu.Tag.ToString();
 
+                int gioi_tinh = Convert.ToInt32(gender);
+                user.Email = textBoxEmail.Text.Trim();
+                user.HoVaTen = textBoxName.Text.Trim();
+                user.ngaySinh = Convert.ToDateTime(textBox2.Text.Trim());
+                user.avatar = textBox1.Text.Trim();
+                user.gioiTinh = gioi_tinh;
+
+                MessageBox.Show(userBUS.Update(user));
+
+                button1.Visible = false;
+                buttonUpImg.Visible = false;
+                panel1.Enabled = false;
+                textBoxName.Enabled = false;
+                textBoxEmail.Enabled = false;
+                dateTimePicker1.Enabled = false;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DateTime s = dateTimePicker1.Value;
-            string gender = "";
-            if (rbNam.Checked) gender = rbNam.Tag.ToString();
-            if (RbNu.Checked) gender = RbNu.Tag.ToString();
+            button1.Visible = true;
+            buttonUpImg.Visible = true;
 
-            MessageBox.Show(s + " " + gender);
+            panel1.Enabled = true;
+            textBoxName.Enabled = true;
+            textBoxEmail.Enabled = true;
+            dateTimePicker1.Enabled = true;
         }
 
         private void label5_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-        private void RenderUser()
+        private void RenderUser(UserDTO user)
         {
-            UserDTO user = UserDAO.instance.GetById(Form1.USER_ID);
             pictureBox1.ImageLocation = @"" + user.avatar;
 
             textBoxName.Text = user.HoVaTen;
 
             textBoxEmail.Text = user.Email;
 
-            if(user.ngaySinh == null)
-            {
-                dateTimePicker1.Value = user.ngaySinh;
-            }    
+            dateTimePicker1.Value = user.ngaySinh;
 
-            if(user.gioiTinh != null)
+            if (user.gioiTinh == 1)
             {
-                if (user.gioiTinh == 1)
-                {
-                    rbNam.Checked = true;
-                }
-                if (user.gioiTinh == 0)
-                {
-                    RbNu.Checked = true;
-                }
-            }    
+                rbNam.Checked = true;
+            }
+            if (user.gioiTinh == 0)
+            {
+                RbNu.Checked = true;
+            }
+        }
+        private bool validate_form()
+        {
+            return true;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            textBox2.Text = dateTimePicker1.Value.ToString();
         }
     }
 }

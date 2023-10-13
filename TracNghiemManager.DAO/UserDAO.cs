@@ -19,7 +19,7 @@ namespace TracNghiemManager.DAO
             {
                 using (SqlConnection connection = DbConnection.GetSqlConnection())
                 {
-                    string query = "INSERT INTO users (username, mat_khau, ngay_tao, trang_thai) VALUES (@username, @password, @ngayTao, 1) SELECT @@IDENTITY AS id";
+                    string query = "INSERT INTO users (username, mat_khau, ngay_tao, trang_thai, ngay_sinh, gioi_tinh) VALUES (@username, @password, @ngayTao, 1, @ngay_tao, 1) SELECT @@IDENTITY AS id";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@username", t.UserName);
@@ -193,6 +193,28 @@ namespace TracNghiemManager.DAO
             return List;
         }
 
+        public int GetIdByUsername(string username)
+        {
+            int Id = -1;
+            using (SqlConnection connection = DbConnection.GetSqlConnection())
+            {
+                string query = "SELECT id FROM users WHERE trang_thai = 1 AND username = '" + username + "'";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Id = Convert.ToInt32(reader["id"]);
+                        }
+                    }
+
+                }
+                connection.Close();
+            }
+            return Id;
+        }
+
         public UserDTO GetById(int id)
         {
             UserDTO user = new UserDTO();
@@ -213,7 +235,7 @@ namespace TracNghiemManager.DAO
                             {
                                 user.ngaySinh = Convert.ToDateTime(reader["ngay_sinh"]);
                             }
-                            if(reader["gioi_tinh"].ToString() != "")
+                            if (reader["gioi_tinh"].ToString() != "")
                             {
                                 user.gioiTinh = Convert.ToInt32(reader["gioi_tinh"]);
                             }
@@ -230,7 +252,29 @@ namespace TracNghiemManager.DAO
 
         public bool Update(UserDTO t)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (SqlConnection connection = DbConnection.GetSqlConnection())
+                {
+                    string query = "update users set ho_va_ten = @ho_va_ten, ngay_sinh = @ngay_sinh, avatar = @avatar, gioi_tinh = @gioi_tinh, email = @email where id = @id; ";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", t.Id);
+                        command.Parameters.AddWithValue("@ho_va_ten", t.HoVaTen);
+                        command.Parameters.AddWithValue("@ngay_sinh", t.ngaySinh);
+                        command.Parameters.AddWithValue("@avatar", t.avatar);
+                        command.Parameters.AddWithValue("@gioi_tinh", t.gioiTinh);
+                        command.Parameters.AddWithValue("@email", t.Email);
+                        int rowsChanged = command.ExecuteNonQuery();
+                        return rowsChanged > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return false;
+            }
         }
 
         public bool isExistUsername(string s)

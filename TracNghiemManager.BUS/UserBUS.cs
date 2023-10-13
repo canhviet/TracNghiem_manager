@@ -25,6 +25,16 @@ namespace TracNghiemManager.BUS
         {
             UserDAO.Delete(id);
         }
+
+        public int getIdByUsername(string s)
+        {
+            return UserDAO.GetIdByUsername(s);
+        }
+
+        public UserDTO getById(int id)
+        {
+            return UserDAO.GetById(id);
+        }
         public string Add(UserDTO t)
         {
             if (UserDAO.Add(t))
@@ -33,7 +43,14 @@ namespace TracNghiemManager.BUS
             }
             return "Thêm thất bại!";
         }
-
+        public string Update(UserDTO t)
+        {
+            if (UserDAO.Update(t))
+            {
+                return "Sửa thành công!";
+            }
+            return "Sửa thất bại!";
+        }
         public int getNewId()
         {
             return UserDAO.newIdOfUser;

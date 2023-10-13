@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
+using TracNghiemManager.BUS;
+using TracNghiemManager.DTO;
 
 namespace TracNghiem_manager
 {
@@ -69,14 +71,28 @@ namespace TracNghiem_manager
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            UserBUS userBUS = new UserBUS();
+            int id = userBUS.getIdByUsername(textBox1.Text.Trim());
             if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            if(id == -1)
+            {
+                MessageBox.Show("Username không tồn tại!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            UserDTO user = userBUS.getById(id);
+            user.Password = user.Password.Trim();
+            textBox2.Text = textBox2.Text.Trim();
+            if (user.Password != textBox2.Text)
+            {
+                MessageBox.Show("Mật Khẩu sai!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-            int id = Convert.ToInt32(textBox1.Text);
             USER_ID = id;
 
             UserForm form = new UserForm();
