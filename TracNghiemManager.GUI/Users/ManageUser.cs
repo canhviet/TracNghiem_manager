@@ -29,6 +29,7 @@ namespace TracNghiem_manager
         public ManageUser()
         {
             InitializeComponent();
+            comboBox1.SelectedIndex = 3;
             reLoad(userBUS.GetAll());
         }
 
@@ -78,7 +79,7 @@ namespace TracNghiem_manager
                 textBoxDate[i].Location = new Point(149, 76);
                 textBoxDate[i].Name = "textBoxDate" + i;
                 textBoxDate[i].Size = new Size(209, 23);
-                textBoxDate[i].Text = "" + users[i].ngaySinh;
+                textBoxDate[i].Text = "" + users[i].ngayTao;
                 // 
                 // textBoxRole
                 // 
@@ -182,7 +183,7 @@ namespace TracNghiem_manager
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             int index = comboBox1.SelectedIndex;
-            if(index == -1)
+            if(index == 3)
             {
                 reLoad(userBUS.Search(textBox1.Text.Trim()));
             }
@@ -192,7 +193,8 @@ namespace TracNghiem_manager
                 {
                     case 0: reLoad(userBUS.SearchEvenUsername(textBox1.Text.Trim())); break;
                     case 1: reLoad(userBUS.SearchEvenPermisson(textBox1.Text.Trim())) ; break;
-                    case 2: reLoad(userBUS.SearchEvenDate(dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString())); break;
+                    case 2: break;
+                    case 3: reLoad(userBUS.Search(textBox1.Text.Trim())); break;
                 }
             } 
                 
@@ -203,11 +205,18 @@ namespace TracNghiem_manager
             if(comboBox1.SelectedIndex == 2)
             {
                 tableLayoutPanel4.Visible = true;
+                textBox1.Visible = false;
             }
             else
             {
                 tableLayoutPanel4.Visible = false;
+                textBox1.Visible = true;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            reLoad(userBUS.SearchEvenDate(dateTimePicker1.Value.ToString(), dateTimePicker2.Value.ToString()));
         }
     }
 }

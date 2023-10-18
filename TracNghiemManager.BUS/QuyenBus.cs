@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TracNghiemManager.BUS
 {
-    internal class QuyenBus
+    public class QuyenBus
     {
+
     }
 }

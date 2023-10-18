@@ -69,7 +69,7 @@ namespace TracNghiemManager.DAO
                     "JOIN users AS u ON ct.user_id = u.id " +
                     "JOIN chi_tiet_chuc_nang AS ctcn ON ctcn.ma_quyen = q.ma_quyen " +
                     "JOIN chuc_nang AS cn ON cn.ma_chuc_nang = ctcn.ma_chuc_nang " +
-                    "WHERE ct.cho_phep = 1 AND u.trang_thai = 1 AND q.trang_thai = 1 AND u.id = "+ userID;
+                    "WHERE ct.cho_phep = 1 AND u.trang_thai = 1 AND q.trang_thai = 1 AND ctcn.cho_phep = 1 AND u.id = "+ userID;
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())

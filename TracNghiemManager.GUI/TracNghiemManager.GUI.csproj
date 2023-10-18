@@ -133,6 +133,9 @@
     <EmbeddedResource Include="Users\ManageUser.resx">
       <DependentUpon>ManageUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Users\UserDetail.resx">
+      <DependentUpon>UserDetail.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TracNghiemManager.BUS\TracNghiemManager.BUS.csproj">
