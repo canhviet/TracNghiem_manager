@@ -1,5 +1,7 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
+using TracNghiem_manager;
 
 namespace TracNghiemManager.GUI
 {
@@ -31,7 +33,7 @@ namespace TracNghiemManager.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Baithi));
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel2 = new TableLayoutPanel();
             pictureBox2 = new PictureBox();
@@ -234,6 +236,11 @@ namespace TracNghiemManager.GUI
             ResumeLayout(false);
         }
 
+        internal void ShowDialog()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
@@ -249,5 +256,9 @@ namespace TracNghiemManager.GUI
         private Label label2;
         private Button button1;
         private CheckBox checkBox1;
+
+        public Form1(int maDeThi)
+        {
+        }
     }
 }

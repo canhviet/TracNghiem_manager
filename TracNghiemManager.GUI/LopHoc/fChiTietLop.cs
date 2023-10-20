@@ -1,21 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using TracNghiem_manager;
 using TracNghiemManager.BUS;
 using TracNghiemManager.DTO;
-using TracNghiemManager.GUI.Properties;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TracNghiemManager.GUI.LopHoc
 {
-	public partial class fChiTietLop : Form
+    public partial class fChiTietLop : Form
 	{
 		LopDTO lop;
 		LopHocUserControl lopHocUserControl;
@@ -205,8 +198,9 @@ namespace TracNghiemManager.GUI.LopHoc
 
 		private void btnLamBai_Click(object s, EventArgs ev, DeThiDTO obj)
 		{
-			throw new NotImplementedException();
-		}
+			Baithi baithi = new Baithi(obj.MaDeThi);
+            baithi.ShowDialog();
+        }
 
 		private void btnDong_Click(object s, EventArgs ev, DeThiDTO obj)
 		{

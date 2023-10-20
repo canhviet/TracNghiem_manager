@@ -55,6 +55,12 @@
     <Compile Include="CauHoi\fThemCauHoi.Designer.cs">
       <DependentUpon>fThemCauHoi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Baithi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Baithi.Designer.cs">
+      <DependentUpon>Baithi.cs</DependentUpon>
+    </Compile>
     <Compile Include="DeThi\fThemChiTietDeThi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +177,9 @@
     <EmbeddedResource Include="CauHoi\fThemCauHoi.resx">
       <DependentUpon>fThemCauHoi.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Baithi.resx">
+      <DependentUpon>Baithi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeThi\fThemChiTietDeThi.resx">
       <DependentUpon>fThemChiTietDeThi.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,13 +237,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TracNghiemManager.BUS\TracNghiemManager.BUS.csproj">
-      <Project>{065def08-b1a5-4543-8977-dcff0f235fb0}</Project>
-      <Name>TracNghiemManager.BUS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TracNghiemManager.DTO\TracNghiemManager.DTO.csproj">
       <Project>{416CE8BC-B563-478A-BFD4-3DF9F4BE7116}</Project>
       <Name>TracNghiemManager.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TracNghiemManager.BUS\TracNghiemManager.BUS.csproj">
+      <Project>{416CE8BC-B563-478A-BFD4-3DF9F4BE7116}</Project>
+      <Name>TracNghiemManager.BUS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
