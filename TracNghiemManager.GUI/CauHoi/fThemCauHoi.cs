@@ -463,48 +463,56 @@ namespace TracNghiemManager.GUI.CauHoi
             {
                 wordDoc = wordApp.Documents.Open(filePath, ReadOnly: true);
                 string content = wordDoc.Content.Text;
-                Regex cauHoiRegex = new Regex(@"Câu \d+: (.*?)(?=Câu \d+:|$)", RegexOptions.Singleline);
 
-                foreach (Match cauHoiMatch in cauHoiRegex.Matches(content))
+                int currentQuestionNumber = 1;
+
+                string doKho = "Dễ";
+                while (true)
                 {
-                    string question = cauHoiMatch.Groups[1].Value;
-                    Match matchDoKho = Regex.Match(question, @"(\*\*|\*)\s*");
-                    string doKho = matchDoKho.Success ? (matchDoKho.Groups[1].Value == "**" ? "Khó" : "Bình thường") : "Dễ";
-                    Regex regex = new Regex(@"^(.*?)A\.");
-                    Match match = regex.Match(question);
-                    if (match.Success)
-                    {
-                        string questionDTB = match.Groups[1].Value.Trim();
-                        int mch = chBus.GetAutoIncrement();
-                        CauHoiDTO ch = new CauHoiDTO(mch, questionDTB, doKho, 12, Form1.USER_ID, 1); //12 ma mon hoc
-                        chBus.Add(ch);
+                    // Tìm vị trí của câu hỏi bắt đầu
+                    int startCauHoi = content.IndexOf($"Câu {currentQuestionNumber}:");
 
-                        Regex cauTraLoiRegex = new Regex(@"[A-D]\. (.+?)(?=[\r\n]|$|Câu \d+:)", RegexOptions.Singleline);
-                        MatchCollection cauTraLoiMatches = cauTraLoiRegex.Matches(question);
-                        foreach (Match cauTraLoiMatch in cauTraLoiMatches)
-                        {
-                            string answer = cauTraLoiMatch.Groups[1].Value.Trim();
-                            answer = Regex.Replace(answer, @"^[A-D]\.\s*", "");
-                            bool isAnswer = false;
-                            CauTraLoiDTO ctl = new CauTraLoiDTO();
-                            ctl.MaCauHoi = mch;
-                            ctl.NoiDung = answer;
-                            foreach (Word.Range wordRange in wordDoc.Sentences)
-                            {
-                                if (wordRange.Start >= cauTraLoiMatch.Index && wordRange.End <= cauTraLoiMatch.Index + cauTraLoiMatch.Length)
-                                {
-                                    if (wordRange.Font.Underline != 0)
-                                    {
-                                        isAnswer = true;
-                                        break;
-                                    } 
-                                }
-                            }
-                            ctl.DapAn = isAnswer;
-                            ctlBus.Add(ctl);
-                        }
+                    if (startCauHoi == -1)
+                    {
+                        break;
+                    }
+                    // Tìm vị trí của câu hỏi kết thúc
+                    int endCauHoi = content.IndexOf("Câu", startCauHoi + 1);
+
+                    if (endCauHoi == -1)
+                    {
+                        endCauHoi = content.Length;
+                    }
+                    string question = content.Substring(startCauHoi + $"Câu {currentQuestionNumber}:".Length, endCauHoi - startCauHoi - $"Câu {currentQuestionNumber}:".Length).Trim();
+
+                    Match matchDoKho = question.Contains("**") ? Regex.Match(question, @"\*\*\s*") : Regex.Match(question, @"\*\s*");
+                    doKho = matchDoKho.Success ? (matchDoKho.Value == "**" ? "Khó" : "Bình thường") : "Dễ";
+
+                    // Xử lý câu hỏi
+                    string questionDTB = question.Split('A')[0].Trim();
+                    //MessageBox.Show($"Câu hỏi: {questionDTB}");
+                    int mch = chBus.GetAutoIncrement();
+                    CauHoiDTO ch = new CauHoiDTO(mch, questionDTB, doKho, 12, Form1.USER_ID, 1); //12 là mã môn học
+                    chBus.Add(ch);
+
+                    string[] answerOptions = question.Split(new[] { "A.", "B.", "C.", "D." }, StringSplitOptions.RemoveEmptyEntries);
+
+                    for (int i = 1; i < answerOptions.Length; i++)
+                    {
+                        string answer = answerOptions[i].Trim();
+                        bool isAnswer = IsUnderlined(answer, content, questionDTB, startCauHoi, endCauHoi, wordApp, wordDoc);
+
+                         //MessageBox.Show($"Câu tl: {answer} : là đáp án {isAnswer}");
+                        CauTraLoiDTO ctl = new CauTraLoiDTO();
+                        ctl.MaCauHoi = mch;
+                        ctl.MaCauTraLoi = ctlBus.GetAutoIncrement();
+                        ctl.NoiDung = answer;
+                        ctl.DapAn = isAnswer;
+                        ctlBus.Add(ctl);
                     }
 
+                    // Tăng số thứ tự câu hỏi
+                    currentQuestionNumber++;
                 }
             }
             catch (Exception ex)
@@ -521,7 +529,21 @@ namespace TracNghiemManager.GUI.CauHoi
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(wordApp);
             }
         }
+        private bool IsUnderlined(string answer, string content, string question, int startCauHoi, int endCauHoi, Word.Application wordApp, Word.Document wordDoc)
+        {
+            int startCauTraLoi = content.IndexOf(answer, startCauHoi + question.Length, endCauHoi - (startCauHoi + question.Length));
+            if (startCauTraLoi != -1)
+            {
+                Word.Range wordRange = wordApp.ActiveDocument.Range(startCauTraLoi, startCauTraLoi + answer.Length);
+                if (wordRange.Font.Underline != 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
 
     }
-    
+
 }
