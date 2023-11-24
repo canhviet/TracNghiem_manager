@@ -97,9 +97,9 @@ namespace TracNghiemManager.GUI.DeThi
 				MessageBox.Show("Không được để trống tên đề thi", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
-			if ((int)nud.Value < 15)
+			if ((int)nud.Value < 1)
 			{
-				MessageBox.Show("Thời gian làm bài phải >= 15p", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				MessageBox.Show("Thời gian làm bài phải >= 1p", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return false;
 			}
 			if ((int)nud.Value > 200)

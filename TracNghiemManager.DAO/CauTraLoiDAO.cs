@@ -18,10 +18,15 @@ namespace TracNghiemManager.DAO
         {
             try
             {
+                if (t.DapAn == null)
+                {
+                    return true;
+                }
+
                 using (SqlConnection connection = DbConnection.GetSqlConnection())
                 {
                     string query = "INSERT INTO cau_tra_loi (ma_cau_hoi, noi_dung, la_dap_an)" +
-                        "VALUES (@idCauHoi, @noiDung, @laDapAn)";
+                      "VALUES (@idCauHoi, @noiDung, @laDapAn)";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@idCauHoi", t.MaCauHoi);

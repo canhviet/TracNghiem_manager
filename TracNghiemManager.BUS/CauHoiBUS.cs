@@ -1,9 +1,15 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Xml.Linq;
 using TracNghiemManager.DAO;
 using TracNghiemManager.DTO;
 using Word = Microsoft.Office.Interop.Word;
@@ -88,56 +94,7 @@ namespace TracNghiemManager.BUS
 				rng.Font.Underline = Word.WdUnderline.wdUnderlineSingle;
 			}
 		}
-		public string ImportFromWord(string filePath)
-		{
-			// Khai báo và khởi tạo biến
-			string content = "";
-
-			// Mở tệp Word
-			Word.Application Wordapp = new Word.Application();
-			Word.Document Worddoc = Wordapp.Documents.Open(filePath);
-
-			content = Worddoc.Content.Text;
-			Worddoc.Close();
-			Wordapp.Quit();
-
-			return content;
-		}
-
-		public List<string> ExtractUnderlinedSentences(string filePath)
-		{
-			Word.Application wordApp = new Word.Application();
-			Word.Document wordDoc = wordApp.Documents.Open(filePath);
-
-			List<string> underlinedSentences = new List<string>();
-			string currentSentence = "";
-
-			foreach (Word.Range range in wordDoc.StoryRanges)
-			{
-				foreach (Word.Range sentence in range.Sentences)
-				{
-					foreach (Word.Range word in sentence.Words)
-					{
-						if (word.Font.Underline != Word.WdUnderline.wdUnderlineNone)
-						{
-							currentSentence += word.Text;
-						}
-					}
-					if (!string.IsNullOrEmpty(currentSentence))
-					{
-						underlinedSentences.Add(currentSentence.Trim());
-						currentSentence = "";
-					}
-				}
-			}
-
-			wordDoc.Close();
-			wordApp.Quit();
-
-			return underlinedSentences;
-		}
-
-		public List<CauHoiDTO> GetAllByMaNguoiTao(int ma)
+        public List<CauHoiDTO> GetAllByMaNguoiTao(int ma)
 		{
 			return cauHoiDAO.GetAllByMaNguoiTao(ma);
 		}
