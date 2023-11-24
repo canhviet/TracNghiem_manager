@@ -37,6 +37,7 @@ namespace TracNghiemManager.GUI.CauHoi
             loadComboBoxDoKho();
             loadComboBoxMonHoc();
             loadComboBoxSoDapAn();
+            loadcbMonHoc();
             this.hanhDong = hanhDong;
             cauHoiObj = obj;
             if (cauHoiObj != null)
@@ -432,9 +433,12 @@ namespace TracNghiemManager.GUI.CauHoi
             }
         }
 
-        private void comboBoxMonHoc_SelectedIndexChanged(object sender, EventArgs e)
+        private void loadcbMonHoc()
         {
-
+            cbMonhoc.ValueMember = "MaMonHoc";
+            cbMonhoc.DisplayMember = "TenMonHoc";
+            List<MonHocDTO> listmh = mhBus.getAll();
+            cbMonhoc.DataSource = listmh;
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -473,7 +477,7 @@ namespace TracNghiemManager.GUI.CauHoi
                     int startCauHoi = content.IndexOf($"Câu {currentQuestionNumber}:");
 
                     if (startCauHoi == -1)
-                    {
+                    { 
                         break;
                     }
                     // Tìm vị trí của câu hỏi kết thúc
@@ -492,7 +496,7 @@ namespace TracNghiemManager.GUI.CauHoi
                     string questionDTB = question.Split('A')[0].Trim();
                     //MessageBox.Show($"Câu hỏi: {questionDTB}");
                     int mch = chBus.GetAutoIncrement();
-                    CauHoiDTO ch = new CauHoiDTO(mch, questionDTB, doKho, 12, Form1.USER_ID, 1); //12 là mã môn học
+                    CauHoiDTO ch = new CauHoiDTO(mch, questionDTB, doKho, selectedMonHoc.MaMonHoc, Form1.USER_ID, 1); //12 là mã môn học
                     chBus.Add(ch);
 
                     string[] answerOptions = question.Split(new[] { "A.", "B.", "C.", "D." }, StringSplitOptions.RemoveEmptyEntries);
@@ -543,7 +547,14 @@ namespace TracNghiemManager.GUI.CauHoi
             return false;
         }
 
-
+        private void cbMonhoc_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            if (cb.SelectedValue != null)
+            {
+                selectedMonHoc = mhBus.getById(Convert.ToInt32(cb.SelectedValue));
+            }
+        }
     }
 
 }

@@ -206,8 +206,6 @@
             this.comboBoxMonHoc.Name = "comboBoxMonHoc";
             this.comboBoxMonHoc.Size = new System.Drawing.Size(325, 29);
             this.comboBoxMonHoc.TabIndex = 1;
-            this.comboBoxMonHoc.SelectedIndexChanged += new System.EventHandler(this.comboBoxMonHoc_SelectedIndexChanged);
-            this.comboBoxMonHoc.SelectedValueChanged += new System.EventHandler(this.comboBoxMonHoc_SelectedValueChanged);
             // 
             // noiDungPanel
             // 
@@ -487,11 +485,13 @@
             // 
             // cbMonhoc
             // 
+            this.cbMonhoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMonhoc.FormattingEnabled = true;
-            this.cbMonhoc.Location = new System.Drawing.Point(217, 48);
+            this.cbMonhoc.Location = new System.Drawing.Point(153, 45);
             this.cbMonhoc.Name = "cbMonhoc";
             this.cbMonhoc.Size = new System.Drawing.Size(232, 29);
             this.cbMonhoc.TabIndex = 1;
+            this.cbMonhoc.SelectedValueChanged += new System.EventHandler(this.cbMonhoc_SelectedValueChanged);
             // 
             // btnThem
             // 
